@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./app.scss";
+import Home from "./pages/home/Home";
+import Register from "./pages/register/Register";
+import Watch from "./pages/watch/Watch";
+import Login from "./pages/login/Login";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "./authContext/AuthContext";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
+  const { user } = useContext(AuthContext);
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          {user ? <Home /> : <Redirect to="/register" />}
+        </Route>
+        <Route path="/register">
+          {!user ? <Register /> : <Redirect to="/" />}
+        </Route>
+        <Route path="/login">{!user ? <Login /> : <Redirect to="/" />}</Route>
+        {user && (
+          <>
+            <Route path="/movies">
+              <Home type="movie" />
+            </Route>
+            <Route path="/series">
+              <Home type="series" />
+            </Route>
+            <Route path="/watch">
+              <Watch />
+            </Route>
+          </>
+        )}
+      </Switch>
+    </Router>
+  );
+};
 
-export default App
+export default App;
