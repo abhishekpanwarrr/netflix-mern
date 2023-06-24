@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authRoutes = require("./routes/auth")
 const usersRoutes = require("./routes/users")
+const movieRoutes = require("./routes/movies")
 
 // configuration
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json())
 // auth routes
 app.use("/api/auth",authRoutes)
 app.use("/api/users",usersRoutes)
+app.use("/api/movies",movieRoutes)
 
 app.listen(PORT,()=> console.log(`Server up and running on ${PORT}`))
 main()
