@@ -2,7 +2,10 @@
   background-color: #000;
   color: #fff;
 }
-
+a{
+  color: #fff;
+  text-decoration: none;
+}
 @mixin tablet {
   @media (max-width: 768px) {
     @content;

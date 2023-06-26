@@ -6,8 +6,9 @@
       rgba(0, 0, 0, 0) 0%,
       rgba(0, 0, 0, 1) 100%
     ),
-    url("http://mppmduse2pmpovwapp.azurewebsites.net/wp-content/uploads/2019/09/netflix-background-9.jpg");
+    url("https://assets.nflxext.com/ffe/siteui/vlv3/530fc327-2ddb-4038-a3f0-2da2d9ccede1/9c547c8a-e707-4bdb-bdbc-843f134dd2a6/IN-en-20230619-popsignuptwoweeks-perspective_alpha_website_large.jpg");
   background-size: cover;
+  background-position: center center;
   position: relative;
 
   .top {
@@ -16,6 +17,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: absolute;
+      z-index: 33;
 
       .logo {
         height: 40px;
@@ -36,14 +39,15 @@
     color: white;
 
     form {
-      width: 300px;
-      height: 300px;
-      padding: 30px;
+      width: 400px;
+      height: 400px;
+      padding: 30px 40px;
       border-radius: 5px;
       background-color: var(--main-color);
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+      background-color: rgba(0, 0, 0, 0.5);
 
       input {
         height: 40px;

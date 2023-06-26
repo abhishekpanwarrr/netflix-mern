@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { login } from "../../authContext/apiCalls";
 import { AuthContext } from "../../authContext/AuthContext";
 import "./login.scss";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -10,17 +11,21 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    if(email === "" || password === "") return alert("Please enter in the fields")
+
     login({ email, password }, dispatch);
   };
   return (
     <div className="login">
       <div className="top">
         <div className="wrapper">
-          <img
-            className="logo"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
-            alt=""
-          />
+          <Link to="/">
+            <img
+              className="logo"
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
+              alt=""
+            />
+          </Link>
         </div>
       </div>
       <div className="container">
@@ -39,9 +44,11 @@ export default function Login() {
           <button className="loginButton" onClick={handleLogin}>
             Sign In
           </button>
-          <span>
+          <Link to="/register">
+          <span >
             New to Netflix? <b>Sign up now.</b>
           </span>
+          </Link>
           <small>
             This page is protected by Google reCAPTCHA to ensure you're not a
             bot. <b>Learn more</b>.
