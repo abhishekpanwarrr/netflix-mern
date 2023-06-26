@@ -9,8 +9,9 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { AuthContext } from "./authContext/AuthContext";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 const App = () => {
   const { user } = useContext(AuthContext);
@@ -18,12 +19,18 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path="/">
-          {user ? <Home /> : <Redirect to="/register" />}
+          <Home />
+        </Route>
+        <Route exact path="/dashboard">
+          <Dashboard />
+        </Route>
+        <Route exact path="/home">
+          {user ? <Dashboard /> : <Redirect to="/" />}
         </Route>
         <Route path="/register">
           {!user ? <Register /> : <Redirect to="/" />}
         </Route>
-        <Route path="/login">{!user ? <Login /> : <Redirect to="/" />}</Route>
+        <Route path="/login">{!user ? <Login /> : <Redirect to="/dashboard" />}</Route>
         {user && (
           <>
             <Route path="/movies">
