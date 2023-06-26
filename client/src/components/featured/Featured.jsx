@@ -23,7 +23,7 @@ export default function Featured({ type, setGenre }) {
     getRandomContent();
   }, [type]);
 
-  console.log("content",content);
+  console.log("content", content);
   return (
     <div className="featured">
       {type && (
@@ -54,15 +54,13 @@ export default function Featured({ type, setGenre }) {
       <img
         src={
           content.img ||
-          "https://images.pexels.com/photos/3137890/pexels-photo-3137890.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          "https://assets.nflxext.com/ffe/siteui/vlv3/530fc327-2ddb-4038-a3f0-2da2d9ccede1/9c547c8a-e707-4bdb-bdbc-843f134dd2a6/IN-en-20230619-popsignuptwoweeks-perspective_alpha_website_large.jpg"
         }
         alt=""
       />
       <div className="info">
         <img
-        width={100}
-        height={100}
-          src="https://images.pexels.com/photos/3137890/pexels-photo-3137890.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+          src="https://assets.nflxext.com/ffe/siteui/vlv3/530fc327-2ddb-4038-a3f0-2da2d9ccede1/9c547c8a-e707-4bdb-bdbc-843f134dd2a6/IN-en-20230619-popsignuptwoweeks-perspective_alpha_website_large.jpg"
           alt=""
         />
         <span className="desc">{content.desc}</span>
